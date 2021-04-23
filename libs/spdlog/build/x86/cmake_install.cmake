@@ -1,4 +1,4 @@
-# Install script for directory: /home/adam/AndroidStudioProjects/libs/spdlog/spdlog
+# Install script for directory: /home/libs/spdlog
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,26 +38,26 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/adam/AndroidStudioProjects/libs/spdlog/spdlog/include/" REGEX "/fmt\\/bundled$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/libs/spdlog/include/" REGEX "/fmt\\/bundled$" EXCLUDE)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/libspdlog.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/libs/spdlog/x86/libspdlog.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/spdlog/fmt/bundled/" TYPE DIRECTORY FILES "/home/adam/AndroidStudioProjects/libs/spdlog/spdlog/include/spdlog/fmt/bundled/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/spdlog/fmt/bundled/" TYPE DIRECTORY FILES "/home/libs/spdlog/include/spdlog/fmt/bundled/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/spdlog.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/libs/spdlog/x86/spdlog.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog/spdlogConfigTargets.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog/spdlogConfigTargets.cmake"
-         "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/CMakeFiles/Export/lib/cmake/spdlog/spdlogConfigTargets.cmake")
+         "/home/libs/spdlog/x86/CMakeFiles/Export/lib/cmake/spdlog/spdlogConfigTargets.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog/spdlogConfigTargets-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -66,22 +66,22 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog" TYPE FILE FILES "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/CMakeFiles/Export/lib/cmake/spdlog/spdlogConfigTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog" TYPE FILE FILES "/home/libs/spdlog/x86/CMakeFiles/Export/lib/cmake/spdlog/spdlogConfigTargets.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog" TYPE FILE FILES "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/CMakeFiles/Export/lib/cmake/spdlog/spdlogConfigTargets-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog" TYPE FILE FILES "/home/libs/spdlog/x86/CMakeFiles/Export/lib/cmake/spdlog/spdlogConfigTargets-release.cmake")
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/spdlog" TYPE FILE FILES
-    "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/spdlogConfig.cmake"
-    "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/spdlogConfigVersion.cmake"
+    "/home/libs/spdlog/x86/spdlogConfig.cmake"
+    "/home/libs/spdlog/x86/spdlogConfigVersion.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/example/cmake_install.cmake")
+  include("/home/libs/spdlog/x86/example/cmake_install.cmake")
 
 endif()
 
@@ -93,5 +93,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/adam/AndroidStudioProjects/libs/spdlog/build/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/libs/spdlog/x86/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

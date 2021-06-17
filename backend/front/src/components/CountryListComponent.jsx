@@ -3,6 +3,7 @@ import BackendService from "../services/BackendService";
 import {faEdit, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Alert from "./Alert";
+import PaginationComponent from "./PaginationComponent";
 
 class CountryListComponent extends React.Component {
     constructor(props) {
@@ -14,6 +15,9 @@ class CountryListComponent extends React.Component {
             show_alert: false,
             checkedItems: [],
             hidden: false,
+            page: 1,
+            limit: 2,
+            totalCount: 0
         }
 
         this.refreshCountries = this.refreshCountries.bind(this)
@@ -25,7 +29,14 @@ class CountryListComponent extends React.Component {
         this.handleGroupCheckChange = this.handleGroupCheckChange.bind(this)
         this.setChecked = this.setChecked.bind(this)
         this.deleteCountriesClicked = this.deleteCountriesClicked.bind(this)
+
+        this.onPageChanged = this.onPageChanged.bind(this)
     }
+
+    onPageChanged(cp) {
+        this.refreshCountries(cp - 1)
+    }
+
 
     setChecked(v) {
         let checkedCopy = Array(this.state.countries.length).fill(v);
@@ -67,7 +78,7 @@ class CountryListComponent extends React.Component {
 
     onDelete() {
         BackendService.deleteCountries(this.state.selected_countries)
-            .then(() => this.refreshCountries(this.state.page))
+            .then(() => this.refreshCountries())
             .catch(() => {
             });
     }
@@ -76,14 +87,17 @@ class CountryListComponent extends React.Component {
         this.setState({show_alert: false})
     }
 
-    refreshCountries() {
-        BackendService.retrieveAllCountries()
+    refreshCountries(cp) {
+        console.log("cp2", this.state.page)
+        BackendService.retrieveAllCountries(cp, this.state.limit)
             .then(resp => {
+
                 this.setState({
-                    countries: resp.data, hidden: false });
+                    countries: resp.data.content,
+                    totalCount: resp.data.totalElements, page: cp, hidden: false });
             })
             .catch(() => {
-                this.setState({hidden: true})
+                this.setState({totalCount: 0, hidden: true})
             })
             .finally(() => this.setChecked(false))
     }
@@ -108,13 +122,19 @@ class CountryListComponent extends React.Component {
                 <div className=" row my-2 mr-0">
                     <h3>Страны</h3>
                     <button className="btn btn-outline-secondary ml-auto"
-                            onClick={this.addCountryClicked}><FontAwesomeIcon icon={faPlus}/>{' '}-Добавить
+                            onClick={this.addCountryClicked}><FontAwesomeIcon icon={faPlus}/>{' '}Добавить
                     </button>
                     <button className="btn btn-outline-secondary ml-2"
                             onClick={this.deleteCountriesClicked}><FontAwesomeIcon icon={faTrash}/>{' '}Удалить
                     </button>
                 </div>
                 <div className="row my-2 mr-0">
+                    <PaginationComponent
+                        totalRecords={this.state.totalCount}
+                        pageLimit={this.state.limit}
+                        pageNeighbours={1}
+                        onPageChanged={this.onPageChanged}
+                    />
                     <table className="table table-sm">
                         <thead className="thead-light">
                         <tr>
@@ -165,7 +185,6 @@ class CountryListComponent extends React.Component {
             </div>
         )
     }
-
 }
 
 export default CountryListComponent;

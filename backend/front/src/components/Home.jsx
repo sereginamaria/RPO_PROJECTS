@@ -1,18 +1,14 @@
 import React from "react";
 
-class Home extends React.Component {
+const Home = () => {
 
-    constructor(props) {
-        super(props);
-    }
+    return (
+        <div className="mt-5">
+            <h2>Rpo Art Frontend</h2>
+        </div>
+    );
 
-    render() {
-        return (
-            <div className="mt-5">
-                <h2>RPO Art Frontend</h2>
-            </div>
-        )
-    }
+
 }
 
 export default Home;

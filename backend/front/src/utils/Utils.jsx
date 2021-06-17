@@ -1,5 +1,4 @@
 class Utils {
-
     saveUser(user) {
         localStorage.setItem('user', JSON.stringify(user))
     }
@@ -14,10 +13,11 @@ class Utils {
     }
 
     getUserName() {
-        let user = JSON.parse(localStorage.getItem("user"))
+        let user = JSON.parse(localStorage.getItem('user'));
         console.log("user", user)
         return user && user.login;
     }
+
 }
 
 export default new Utils()

@@ -4,9 +4,8 @@ import {Form} from "react-bootstrap"
 import BackendService from "../services/BackendService";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronLeft, faSave} from "@fortawesome/free-solid-svg-icons";
-import {alertActions} from "../utils/Rdx";
+import {alertActions} from "../utils/Redux";
 import Alert from "react-bootstrap/Alert";
-
 
 class CountryComponent extends Component {
     constructor(props) {
@@ -15,6 +14,7 @@ class CountryComponent extends Component {
             id: this.props.match.params.id,
             name: '',
             hidden: false,
+
         }
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -29,6 +29,7 @@ class CountryComponent extends Component {
         event.preventDefault();
         event.stopPropagation();
         let err = null;
+        console.log(this.state, 'STATE');
         if (!this.state.name) {
             err = "Название страны должно быть указано"
         }
@@ -38,10 +39,8 @@ class CountryComponent extends Component {
         let country = {id: this.state.id, name: this.state.name};
         if (parseInt(country.id) === -1) {
             BackendService.createCountry(country)
-                .then(() => {
-                    this.props.history.push('/countries')
-                })
-                .catch(() => {});
+                .then(() => this.props.history.push('/countries'))
+                .catch(() => {})
         } else {
             BackendService.updateCountry(country)
                 .then(() => this.props.history.push('/countries'))
@@ -66,6 +65,7 @@ class CountryComponent extends Component {
         if (this.state.hidden)
             return null;
         return (
+            <>
                 <div className="m-4">
                     <div className="row my-2 mr-0">
                         <h3>Страна</h3>
@@ -94,6 +94,7 @@ class CountryComponent extends Component {
                         </button>
                     </Form>
                 </div>
+            </>
         )
     }
 
